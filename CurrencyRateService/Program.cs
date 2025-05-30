@@ -1,4 +1,4 @@
-
+using CurrencyRateService.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyRateService
@@ -12,6 +12,9 @@ namespace CurrencyRateService
             // Add services to the container.
             builder.Services.AddDbContext<CurrencyDbContext>(options =>
                 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddScoped<ICurrencyRateService, GetCurrencyRateService>();
+            builder.Services.AddHttpClient();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

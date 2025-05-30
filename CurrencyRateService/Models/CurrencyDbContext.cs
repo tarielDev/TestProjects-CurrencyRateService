@@ -1,8 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-public class CurrencyDbContext : DbContext
+namespace CurrencyRateService.Models
 {
-    public CurrencyDbContext(DbContextOptions<CurrencyDbContext> options) : base(options) { }
+    public class CurrencyDbContext : DbContext
+    {
+        public CurrencyDbContext(DbContextOptions<CurrencyDbContext> options)
+            : base(options) { }
 
-    public DbSet<CurrencyRate> CurrencyRates => Set<CurrencyRate>();
+        public DbSet<CurrencyRate> CurrencyRates { get; set; }
+    }
 }
